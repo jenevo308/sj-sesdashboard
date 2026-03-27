@@ -1,18 +1,20 @@
 // -----------------------------
-// CONFIG – SERPENTINE JARRAHDALE (Correct URLs)
+// CONFIG – SERPENTINE JARRAHDALE (via Cloudflare Worker Proxy)
 // -----------------------------
+
+const PROXY = "https://late-sun-f6f1.wade-performance.workers.dev/?url=";
 
 // Karnet AWS (best for SJ)
 const BOM_OBS_URL =
-  "https://www.bom.gov.au/fwo/IDW60801/IDW60801.94610.json";
+  PROXY + encodeURIComponent("https://www.bom.gov.au/fwo/IDW60801/IDW60801.94610.json");
 
 // Lower West District Forecast (correct path)
 const BOM_FORECAST_URL =
-  "https://www.bom.gov.au/feeds/districts/IDW12300.xml";
+  PROXY + encodeURIComponent("https://www.bom.gov.au/feeds/districts/IDW12300.xml");
 
 // WA State Warnings (correct modern feed)
 const BOM_WARNINGS_URL =
-  "https://www.bom.gov.au/feeds/warnings/wa.xml";
+  PROXY + encodeURIComponent("https://www.bom.gov.au/feeds/warnings/wa.xml");
 
 
 // -----------------------------
