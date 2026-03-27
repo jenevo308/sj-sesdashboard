@@ -230,3 +230,11 @@ async function initDashboard() {
 }
 
 document.addEventListener("DOMContentLoaded", initDashboard);
+
+// -----------------------------
+// AUTO-REFRESH (every 10 minutes)
+// -----------------------------
+setInterval(() => {
+  console.log("Auto-refreshing SES dashboard...");
+  initDashboard();
+}, 30 * 60 * 1000); // 30 minutes
