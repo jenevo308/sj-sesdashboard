@@ -5,6 +5,7 @@
   <title>Serpentine Jarrahdale SES – Local Weather & Warnings</title>
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <link rel="stylesheet" href="assets/css/style.css" />
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/qrious/4.0.2/qrious.min.js"></script>
 </head>
 <body>
   <header class="site-header">
@@ -72,6 +73,25 @@
         <a href="https://www.dfes.wa.gov.au" target="_blank" rel="noopener">DFES</a> or your local council.
       </p>
     </section>
+
+<section class="panel panel-info">
+  <h2>Training & Recruitment</h2>
+
+  <div class="grid-2">
+    <div>
+      <h3>Training Night Calendar</h3>
+      <canvas id="qr-training"></canvas>
+      <p><a id="training-link" href="#" target="_blank">Open Calendar</a></p>
+    </div>
+
+    <div>
+      <h3>Join the SES</h3>
+      <canvas id="qr-recruit"></canvas>
+      <p><a id="recruit-link" href="#" target="_blank">Recruitment Info</a></p>
+    </div>
+  </div>
+</section>
+    
   </main>
 
   <footer class="site-footer">
