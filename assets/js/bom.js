@@ -16,7 +16,6 @@ const BOM_FORECAST_URL =
 const BOM_WARNINGS_URL =
   PROXY + encodeURIComponent("https://www.bom.gov.au/feeds/warnings/wa.xml");
 
-
 // -----------------------------
 // HELPERS
 // -----------------------------
