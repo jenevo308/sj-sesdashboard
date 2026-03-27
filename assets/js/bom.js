@@ -238,3 +238,25 @@ setInterval(() => {
   console.log("Auto-refreshing SES dashboard...");
   initDashboard();
 }, 30 * 60 * 1000); // 30 minutes
+
+// -----------------------------
+// QR CODES FOR TRAINING & RECRUITMENT
+// -----------------------------
+
+const TRAINING_URL = "https://example.com/training-calendar"; 
+const RECRUIT_URL = "https://example.com/recruitment";
+
+document.getElementById("training-link").href = TRAINING_URL;
+document.getElementById("recruit-link").href = RECRUIT_URL;
+
+new QRious({
+  element: document.getElementById("qr-training"),
+  value: TRAINING_URL,
+  size: 160
+});
+
+new QRious({
+  element: document.getElementById("qr-recruit"),
+  value: RECRUIT_URL,
+  size: 160
+});
