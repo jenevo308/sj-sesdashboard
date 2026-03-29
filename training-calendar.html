@@ -1,210 +1,189 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <title>Serpentine Jarrahdale SES Traing nights</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <style>
-    body {
-      font-family: Arial, sans-serif;
-      margin: 0;
-      background: #f4f4f4;
-      color: #222;
-    }
+<meta charset="UTF-8">
+<title>2026 Training Calendar – Serpentine Jarrahdale SES</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
 
-    header {
-      background: #f57c00;
-      color: #fff;
-      padding: 20px 15px;
-      text-align: center;
-    }
+<style>
+  body {
+    font-family: Arial, sans-serif;
+    background: #f5f5f5;
+    margin: 0;
+    padding: 20px;
+  }
 
-    header h1 {
-      margin: 0;
-      font-size: 2rem;
-    }
+  h1 {
+    text-align: center;
+    color: #ff8c00;
+    margin-bottom: 30px;
+  }
 
-    header p {
-      margin: 8px 0 0;
-      font-size: 1rem;
-    }
+  /* Training session card */
+  .session {
+    border-left: 6px solid #ff8c00;
+    background: #fff7ef;
+    padding: 15px;
+    margin: 15px 0;
+    border-radius: 6px;
+  }
 
-    nav {
-      background: #333;
-      color: #fff;
-      display: flex;
-      justify-content: center;
-      gap: 20px;
-      padding: 10px 0;
-      flex-wrap: wrap;
-    }
+  .session h3 {
+    margin: 0;
+    color: #ff8c00;
+    font-size: 1.4em;
+  }
 
-    nav a {
-      color: #fff;
-      text-decoration: none;
-      font-size: 0.95rem;
-    }
+  .session .date {
+    font-weight: bold;
+    color: black;
+    margin-bottom: 8px;
+  }
 
-    nav a:hover {
-      text-decoration: underline;
-    }
+  /* Highlighted (#) sessions */
+  .highlight {
+    background: #ffe0b3;
+    border-left-color: #ff6a00;
+  }
 
-    main {
-      max-width: 1000px;
-      margin: 20px auto;
-      padding: 0 15px 40px;
-    }
+  /* Auto-highlight THIS WEEK */
+  .this-week {
+    border-left: 8px solid #ff4500 !important;
+    background: #fff2e6 !important;
+    box-shadow: 0 0 12px rgba(255, 140, 0, 0.6);
+    position: relative;
+  }
 
-    section {
-      background: #fff;
-      margin-bottom: 20px;
-      padding: 20px;
-      border-radius: 4px;
-      box-shadow: 0 1px 3px rgba(0,0,0,0.08);
-    }
-
-    section h2 {
-      margin-top: 0;
-      color: #f57c00;
-    }
-
-    ul {
-      padding-left: 20px;
-    }
-
-    .cta {
-      text-align: center;
-      margin-top: 10px;
-    }
-
-    .cta a,
-    button {
-      background: #f57c00;
-      color: #fff;
-      border: none;
-      padding: 10px 18px;
-      border-radius: 3px;
-      cursor: pointer;
-      font-size: 1rem;
-      text-decoration: none;
-      display: inline-block;
-    }
-
-    .cta a:hover,
-    button:hover {
-      background: #e36f00;
-    }
-
-    footer {
-      text-align: center;
-      padding: 15px;
-      font-size: 0.85rem;
-      background: #222;
-      color: #ccc;
-    }
-
-    .two-column {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 20px;
-    }
-
-    .two-column > div {
-      flex: 1 1 280px;
-    }
-
-    @media (max-width: 600px) {
-      header h1 {
-        font-size: 1.6rem;
-      }
-    }
-  </style>
+  .this-week::after {
+    content: "THIS WEEK";
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    background: #ff8c00;
+    color: black;
+    padding: 4px 10px;
+    font-weight: bold;
+    border-radius: 4px;
+    font-size: 0.9em;
+  }
+</style>
 </head>
+
 <body>
-  <header>
-    <h1>SES Serpentine Jarrahdale</h1>
-    <p>Help protect your community during storms, floods, searches and emergencies.</p>
-  </header>
-  
-  <main>
-    <section id="about">
-      <h2>Serpentine Jarrahdale SES Traing nights</h2>
-      <p>
-        <table>
-  <thead>
-    <tr>
-      <th>Date</th>
-      <th>Training</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr><td data-label="Date">07/01/2026</td><td data-label="Training"></td></tr>
-    <tr><td data-label="Date">14/01/2026</td><td data-label="Training"></td></tr>
-    <tr><td data-label="Date">21/01/2026</td><td data-label="Training">Prep for bunnings and year</td></tr>
-    <tr><td data-label="Date">28/01/2026</td><td data-label="Training">Prep year / restock / stocktake / maintenance</td></tr>
 
-    <tr class="highlight"><td data-label="Date">04/02/2026</td><td data-label="Training">Vehicle / trailer / meeting</td></tr>
-    <tr><td data-label="Date">11/02/2026</td><td data-label="Training">Vehicle training</td></tr>
-    <tr class="highlight"><td data-label="Date">18/02/2026</td><td data-label="Training">Trailer training</td></tr>
-    <tr><td data-label="Date">25/02/2026</td><td data-label="Training">Knots / casualty handling</td></tr>
+<h1>2026 Training Calendar</h1>
 
-    <tr class="highlight"><td data-label="Date">04/03/2026</td><td data-label="Training">Meeting and maintenance</td></tr>
-    <tr><td data-label="Date">11/03/2026</td><td data-label="Training">BGR</td></tr>
-    <tr class="highlight"><td data-label="Date">18/03/2026</td><td data-label="Training">BGR</td></tr>
-    <tr><td data-label="Date">25/03/2026</td><td data-label="Training">BGR consolidation</td></tr>
+<!-- JANUARY -->
+<div class="session"><h3>Training Night</h3><div class="date">07/01/2026</div>A gentle return from the holiday break — reconnect, reset, and get ready for a massive year ahead.</div>
+<div class="session"><h3>Training Night</h3><div class="date">14/01/2026</div>Settling back into rhythm. Light duties, team catch‑ups, and preparing for the year’s first major sessions.</div>
+<div class="session"><h3>Prep for Bunnings & Year</h3><div class="date">21/01/2026</div>Planning, organising, and gearing up for our Bunnings fundraiser and the year’s operational tempo.</div>
+<div class="session"><h3>Prep, Restock & Maintenance</h3><div class="date">28/01/2026</div>A full unit refresh — stocktake, equipment checks, and making sure everything is mission‑ready.</div>
 
-    <tr class="highlight"><td data-label="Date">01/04/2026</td><td data-label="Training">Meeting and maintenance</td></tr>
-    <tr><td data-label="Date">08/04/2026</td><td data-label="Training">Intro to radios – Keith</td></tr>
-    <tr class="highlight"><td data-label="Date">15/04/2026</td><td data-label="Training">Intro to radios – Keith</td></tr>
-    <tr><td data-label="Date">22/04/2026</td><td data-label="Training">Storm ground</td></tr>
-    <tr class="highlight"><td data-label="Date">29/04/2026</td><td data-label="Training">Storm ground</td></tr>
+<!-- FEBRUARY -->
+<div class="session highlight"><h3>Vehicle, Trailer & Meeting Night</h3><div class="date">04/02/2026</div>Hands‑on with the fleet — lights, radios, recovery gear, and trailer readiness. A core SES skillset.</div>
+<div class="session"><h3>Vehicle Training</h3><div class="date">11/02/2026</div>Learn the ins and outs of our operational vehicles — safe driving, equipment access, and deployment setups.</div>
+<div class="session highlight"><h3>Trailer Training</h3><div class="date">18/02/2026</div>Hitching, reversing, manoeuvring, and safe deployment. Trailer mastery unlocked.</div>
+<div class="session"><h3>Knots & Casualty Handling</h3><div class="date">25/02/2026</div>Rope skills, patient movement, and teamwork under pressure — essential rescue fundamentals.</div>
 
-    <tr><td data-label="Date">06/05/2026</td><td data-label="Training">Storm RSS + LSS</td></tr>
-    <tr class="highlight"><td data-label="Date">13/05/2026</td><td data-label="Training">Meeting and maintenance</td></tr>
-    <tr><td data-label="Date">20/05/2026</td><td data-label="Training">WOW DAY</td></tr>
-    <tr class="highlight"><td data-label="Date">27/05/2026</td><td data-label="Training">Storm consolidation</td></tr>
+<!-- MARCH -->
+<div class="session highlight"><h3>Meeting & Maintenance</h3><div class="date">04/03/2026</div>Unit updates, gear checks, and ensuring everything is ready for storm season.</div>
+<div class="session"><h3>BGR (Basic General Rescue)</h3><div class="date">11/03/2026</div>Core rescue skills — teamwork, safety, and practical hands‑on learning.</div>
+<div class="session highlight"><h3>BGR Practical</h3><div class="date">18/03/2026</div>A deeper dive into rescue scenarios — controlled chaos, teamwork, and skill refinement.</div>
+<div class="session"><h3>BGR Consolidation</h3><div class="date">25/03/2026</div>Bringing it all together with scenario‑based learning and confidence‑building exercises.</div>
 
-    <tr><td data-label="Date">03/06/2026</td><td data-label="Training">First aid (chainsaw)</td></tr>
-    <tr class="highlight"><td data-label="Date">10/06/2026</td><td data-label="Training">Chainsaw logs</td></tr>
-    <tr><td data-label="Date">17/06/2026</td><td data-label="Training">Chainsaw maintenance</td></tr>
-    <tr class="highlight"><td data-label="Date">24/06/2026</td><td data-label="Training">Storm and chainsaw activity</td></tr>
+<!-- APRIL -->
+<div class="session highlight"><h3>Meeting & Maintenance</h3><div class="date">01/04/2026</div>Keeping the unit sharp and ready — equipment checks and operational updates.</div>
+<div class="session"><h3>Intro to Radios (Keith)</h3><div class="date">08/04/2026</div>Learn to communicate like a pro — radio discipline, call signs, and clear messaging.</div>
+<div class="session highlight"><h3>Radio Practical (Keith)</h3><div class="date">15/04/2026</div>Hands‑on radio scenarios — real‑world communication challenges and clarity under pressure.</div>
+<div class="session"><h3>Storm Ground</h3><div class="date">22/04/2026</div>Tarps, ladders, roof safety, and storm response fundamentals — the heart of SES work.</div>
+<div class="session highlight"><h3>Storm Ground Practical</h3><div class="date">29/04/2026</div>Realistic storm scenarios — teamwork, safety, and fast decision‑making.</div>
 
-    <tr><td data-label="Date">01/07/2026</td><td data-label="Training">Meeting and maintenance</td></tr>
-    <tr class="highlight"><td data-label="Date">08/07/2026</td><td data-label="Training">First aid</td></tr>
-    <tr><td data-label="Date">15/07/2026</td><td data-label="Training">First aid scenarios</td></tr>
-    <tr class="highlight"><td data-label="Date">22/07/2026</td><td data-label="Training">Maps / nav (road map)</td></tr>
-    <tr><td data-label="Date">29/07/2026</td><td data-label="Training">Maps / nav road activity</td></tr>
+<!-- MAY -->
+<div class="session"><h3>Storm RSS + LSS</h3><div class="date">06/05/2026</div>Rapid and light storm support — fast, efficient, and safe response techniques.</div>
+<div class="session highlight"><h3>Meeting & Maintenance</h3><div class="date">13/05/2026</div>Keeping the unit operationally sharp and ready for winter.</div>
+<div class="session"><h3>WOW Day</h3><div class="date">20/05/2026</div>Wear Orange Wednesday — celebrating SES volunteers with community engagement and fun.</div>
+<div class="session highlight"><h3>Storm Consolidation</h3><div class="date">27/05/2026</div>Bringing all storm skills together — efficiency, teamwork, and readiness.</div>
 
-    <tr class="highlight"><td data-label="Date">05/08/2026</td><td data-label="Training">Map / nav search</td></tr>
-    <tr><td data-label="Date">12/08/2026</td><td data-label="Training">AGM / GM / maintenance</td></tr>
-    <tr class="highlight"><td data-label="Date">19/08/2026</td><td data-label="Training">COMCEN</td></tr>
-    <tr><td data-label="Date">26/08/2026</td><td data-label="Training">Search</td></tr>
+<!-- JUNE -->
+<div class="session"><h3>First Aid (Chainsaw)</h3><div class="date">03/06/2026</div>Safety around chainsaws, trauma care, and emergency response.</div>
+<div class="session highlight"><h3>Chainsaw Logs</h3><div class="date">10/06/2026</div>Practical chainsaw handling — cutting, safety, and situational awareness.</div>
+<div class="session"><h3>Chainsaw Maintenance</h3><div class="date">17/06/2026</div>Sharpening, cleaning, troubleshooting — keep your saw running like new.</div>
+<div class="session highlight"><h3>Storm & Chainsaw Activity</h3><div class="date">24/06/2026</div>Combined storm and chainsaw scenarios — high‑energy, hands‑on, and realistic.</div>
 
-    <tr class="highlight"><td data-label="Date">02/09/2026</td><td data-label="Training">Search</td></tr>
-    <tr><td data-label="Date">09/09/2026</td><td data-label="Training">Search</td></tr>
-    <tr class="highlight"><td data-label="Date">16/09/2026</td><td data-label="Training">Search activity (out of unit) – Stacey loop</td></tr>
-    <tr><td data-label="Date">23/09/2026</td><td data-label="Training">Search activity (out of unit) – external</td></tr>
-    <tr class="highlight"><td data-label="Date">30/09/2026</td><td data-label="Training">Meeting and maintenance</td></tr>
+<!-- JULY -->
+<div class="session"><h3>Meeting & Maintenance</h3><div class="date">01/07/2026</div>Mid‑year reset — equipment checks and operational updates.</div>
+<div class="session highlight"><h3>First Aid</h3><div class="date">08/07/2026</div>Essential lifesaving skills — CPR, trauma, and emergency care.</div>
+<div class="session"><h3>First Aid Scenarios</h3><div class="date">15/07/2026</div>Realistic medical simulations — teamwork and quick thinking.</div>
+<div class="session highlight"><h3>Maps & Navigation (Road Map)</h3><div class="date">22/07/2026</div>Learn to navigate like a pro — map reading, bearings, and route planning.</div>
+<div class="session"><h3>Maps & Navigation Activity</h3><div class="date">29/07/2026</div>Practical navigation challenges — find your way under pressure.</div>
 
-    <tr><td data-label="Date">07/10/2026</td><td data-label="Training">Off road</td></tr>
-    <tr class="highlight"><td data-label="Date">14/10/2026</td><td data-label="Training">Fire safety / burn over</td></tr>
-    <tr><td data-label="Date">21/10/2026</td><td data-label="Training">Fire safety</td></tr>
-    <tr class="highlight"><td data-label="Date">28/10/2026</td><td data-label="Training">Fire station tour – local</td></tr>
+<!-- AUGUST -->
+<div class="session highlight"><h3>Map & Nav Search</h3><div class="date">05/08/2026</div>Search planning, grid systems, and field navigation.</div>
+<div class="session"><h3>AGM / GM / Maintenance</h3><div class="date">12/08/2026</div>Annual meeting, unit updates, and equipment checks.</div>
+<div class="session highlight"><h3>COMCEN</h3><div class="date">19/08/2026</div>Communications centre operations — dispatch, logging, and radio control.</div>
+<div class="session"><h3>Search</h3><div class="date">26/08/2026</div>Search techniques, line searches, and missing person protocols.</div>
 
-    <tr><td data-label="Date">04/11/2026</td><td data-label="Training">Meeting and maintenance</td></tr>
-    <tr class="highlight"><td data-label="Date">11/11/2026</td><td data-label="Training">Radio refresher</td></tr>
-    <tr><td data-label="Date">18/11/2026</td><td data-label="Training">BGR refresher</td></tr>
-    <tr class="highlight"><td data-label="Date">25/11/2026</td><td data-label="Training">Vehicle refresher</td></tr>
+<!-- SEPTEMBER -->
+<div class="session highlight"><h3>Search</h3><div class="date">02/09/2026</div>Search fundamentals — teamwork, communication, and coordination.</div>
+<div class="session"><h3>Search</h3><div class="date">09/09/2026</div>Continued search practice — refining accuracy and efficiency.</div>
+<div class="session highlight"><h3>Search Activity (Stacey Loop)</h3><div class="date">16/09/2026</div>Out‑of‑unit search scenario — terrain challenges and real‑world navigation.</div>
+<div class="session"><h3>Search Activity (External)</h3><div class="date">23/09/2026</div>A full external search simulation — teamwork under realistic conditions.</div>
+<div class="session highlight"><h3>Meeting & Maintenance</h3><div class="date">30/09/2026</div>End‑of‑quarter reset — gear checks and operational updates.</div>
 
-    <tr><td data-label="Date">02/12/2026</td><td data-label="Training">Map / nav / road / trailer</td></tr>
-    <tr class="highlight"><td data-label="Date">09/12/2026</td><td data-label="Training">Consolidation fun night</td></tr>
-    <tr><td data-label="Date">16/12/2026</td><td data-label="Training">LAST TRAINING</td></tr>
-    <tr><td data-label="Date">23/12/2026</td><td data-label="Training"></td></tr>
-    <tr><td data-label="Date">30/12/2026</td><td data-label="Training"></td></tr>
-  </tbody>
-</table>
-       
-      </p>
-    </section>
+<!-- OCTOBER -->
+<div class="session"><h3>Off Road</h3><div class="date">07/10/2026</div>Off‑road driving skills — control, safety, and terrain awareness.</div>
+<div class="session highlight"><h3>Fire Safety / Burn Over</h3><div class="date">14/10/2026</div>Critical fire survival training — burnover drills and safety protocols.</div>
+<div class="session"><h3>Fire Safety</h3><div class="date">21/10/2026</div>Fire behaviour, safety zones, and protective equipment.</div>
+<div class="session highlight"><h3>Fire Station Tour (Local)</h3><div class="date">28/10/2026</div>A behind‑the‑scenes look at local fire operations — gear, trucks, and teamwork.</div>
+
+<!-- NOVEMBER -->
+<div class="session"><h3>Meeting & Maintenance</h3><div class="date">04/11/2026</div>Pre‑summer readiness — equipment checks and operational updates.</div>
+<div class="session highlight"><h3>Radio Refresher</h3><div class="date">11/11/2026</div>Sharpen your radio skills — clarity, confidence, and communication discipline.</div>
+<div class="session"><h3>BGR Refresher</h3><div class="date">18/11/2026</div>Revisiting core rescue skills — teamwork and scenario practice.</div>
+<div class="session highlight"><h3>Vehicle Refresher</h3><div class="date">25/11/2026</div>A full review of vehicle operations — safety, equipment, and deployment.</div>
+
+<!-- DECEMBER -->
+<div class="session"><h3>Map / Nav / Road / Trailer</h3><div class="date">02/12/2026</div>A multi‑skill night — navigation, driving, and trailer handling combined.</div>
+<div class="session highlight"><h3>Consolidation Fun Night</h3><div class="date">09/12/2026</div>A fun, relaxed wrap‑up session — games, challenges, and team bonding.</div>
+<div class="session"><h3>LAST TRAINING</h3><div class="date">16/12/2026</div>Final session of the year — celebration, reflection, and unit pride.</div>
+<div class="session"><h3>No Training</h3><div class="date">23/12/2026</div>Holiday break — enjoy time with family and recharge.</div>
+<div class="session"><h3>No Training</h3><div class="date">30/12/2026</div>Final week of the year — rest up for 2027.</div>
+
+<!-- AUTO-HIGHLIGHT SCRIPT -->
+<script>
+document.addEventListener("DOMContentLoaded", () => {
+  const sessions = document.querySelectorAll(".session");
+
+  function parseDate(d) {
+    const [day, month, year] = d.split("/").map(Number);
+    return new Date(year, month - 1, day);
+  }
+
+  const today = new Date();
+  let closestSession = null;
+  let smallestDiff = Infinity;
+
+  sessions.forEach(session => {
+    const dateText = session.querySelector(".date")?.textContent.trim();
+    if (!dateText) return;
+
+    const sessionDate = parseDate(dateText);
+    const diff = Math.abs(sessionDate - today);
+
+    if (diff < smallestDiff) {
+      smallestDiff = diff;
+      closestSession = session;
+    }
+  });
+
+  if (closestSession) {
+    closestSession.classList.add("this-week");
+  }
+});
+</script>
+
+</body>
+</html>
+
 
   
