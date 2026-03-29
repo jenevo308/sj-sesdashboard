@@ -243,7 +243,7 @@ setInterval(() => {
 // QR CODES FOR TRAINING & RECRUITMENT
 // -----------------------------
 
-const TRAINING_URL = "https://example.com/training-calendar"; 
+const TRAINING_URL = "https://jenevo308.github.io/sj-sesdashboard/training-calendar.html"; 
 const RECRUIT_URL = "https://jenevo308.github.io/sj-sesdashboard/recruitment.html";
 
 document.getElementById("training-link").href = TRAINING_URL;
