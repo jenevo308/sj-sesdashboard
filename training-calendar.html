@@ -148,7 +148,7 @@
 <div class="session"><h3>LAST TRAINING</h3><div class="date">16/12/2026</div>Final session of the year — celebration, reflection, and unit pride.</div>
 <div class="session"><h3>No Training</h3><div class="date">23/12/2026</div>Holiday break — enjoy time with family and recharge.</div>
 <div class="session"><h3>No Training</h3><div class="date">30/12/2026</div>Final week of the year — rest up for 2027.</div>
-
+  
 <!-- AUTO-HIGHLIGHT SCRIPT -->
 <script>
 document.addEventListener("DOMContentLoaded", () => {
@@ -178,9 +178,18 @@ document.addEventListener("DOMContentLoaded", () => {
 
   if (closestSession) {
     closestSession.classList.add("this-week");
+
+    // Auto-scroll to the highlighted session
+    setTimeout(() => {
+      closestSession.scrollIntoView({
+        behavior: "smooth",
+        block: "center"
+      });
+    }, 300);
   }
 });
 </script>
+
 
 </body>
 </html>
