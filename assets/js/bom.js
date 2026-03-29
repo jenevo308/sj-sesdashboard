@@ -244,7 +244,7 @@ setInterval(() => {
 // -----------------------------
 
 const TRAINING_URL = "https://example.com/training-calendar"; 
-const RECRUIT_URL = "https://example.com/recruitment";
+const RECRUIT_URL = "https://jenevo308.github.io/sj-sesdashboard/recruitment";
 
 document.getElementById("training-link").href = TRAINING_URL;
 document.getElementById("recruit-link").href = RECRUIT_URL;
