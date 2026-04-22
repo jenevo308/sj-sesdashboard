@@ -5,9 +5,9 @@
   <title>Serpentine Jarrahdale SES – Local Weather & Warnings</title>
   <meta name="viewport" content="width=device-width, initial-scale=1" />
 
-  <!-- ===============================
-       Rotation + Portrait Layout Fix
-       =============================== -->
+  <!-- =========================================
+       Rotation + Auto‑Scaling for Samsung TVs
+       ========================================= -->
   <style>
     html, body {
       margin: 0;
@@ -18,7 +18,7 @@
       background: #000;
     }
 
-    /* Rotate entire page */
+    /* Rotate the display */
     body {
       position: absolute;
       top: 0;
@@ -29,16 +29,21 @@
       transform-origin: top left;
     }
 
-    /* Fixed 1080x1920 portrait canvas */
+    /* === Scaled portrait stage === */
+    .stage {
+      width: 1920px;
+      height: 1080px;
+      transform-origin: top left;
+      transform: scale(calc(100vw / 1920));
+    }
+
+    /* === Logical 1080x1920 portrait canvas === */
     .portrait-canvas {
       width: 1080px;
       height: 1920px;
-      margin: 0 auto;
       padding: 32px;
-      display: flex;
-      flex-direction: column;
       box-sizing: border-box;
-      background: #ffffff;
+      background: #fff;
     }
 
     *, *::before, *::after {
@@ -46,101 +51,50 @@
     }
   </style>
 
-  <!-- Your existing stylesheet -->
-  <link rel="stylesheet" href="assets/css/style.css" />
-
-  <!-- QR library -->
+  <link rel="stylesheet" href="assets/css/style.css">
   <script src="https://cdnjs.cloudflare.com/ajax/libs/qrious/4.0.2/qrious.min.js"></script>
 </head>
 
 <body>
-  <div class="portrait-canvas">
 
-    <header class="site-header">
-      <div class="logo-title">
-        <div class="logo-circle">SES</div>
-        <div>
-          <h1>Serpentine Jarrahdale State Emergency Service</h1>
-          <p>Local weather, warnings and preparedness information</p>
-        </div>
-      </div>
-    </header>
+  <!-- Stage scales to fit screen -->
+  <div class="stage">
 
-    <main class="layout">
+    <!-- Portrait layout -->
+    <div class="portrait-canvas">
 
-      <section class="panel panel-main">
-        <h2>Current Conditions – Local Area</h2>
-        <div class="grid-2">
+      <header class="site-header">
+        <div class="logo-title">
+          <div class="logo-circle">SES</div>
           <div>
-            <p><strong>Temperature:</strong> <span id="temp">Loading…</span></p>
-            <p><strong>Feels like:</strong> <span id="feels">Loading…</span></p>
-            <p><strong>Wind:</strong> <span id="wind">Loading…</span></p>
-            <p><strong>Gusts:</strong> <span id="gusts">Loading…</span></p>
-            <p><strong>Rain since 9am:</strong> <span id="rain">Loading…</span></p>
-          </div>
-          <div>
-            <p><strong>Observation site:</strong> <span id="site-name">Loading…</span></p>
-            <p><strong>Last updated:</strong> <span id="obs-time">Loading…</span></p>
-            <p><strong>Forecast district:</strong> <span id="forecast-area">Loading…</span></p>
-            <p><strong>Fire danger:</strong> <span id="fire-danger">Loading…</span></p>
-            <p><strong>Rain chance today:</strong> <span id="rain-chance">Loading…</span></p>
+            <h1>Serpentine Jarrahdale State Emergency Service</h1>
+            <p>Local weather, warnings and preparedness information</p>
           </div>
         </div>
-      </section>
+      </header>
 
-      <section class="panel panel-alert">
-        <h2>SES Advisory – Serpentine Jarrahdale</h2>
-        <div id="ses-message" class="alert-message">
-          Calculating local advisory based on current conditions…
-        </div>
-        <p class="alert-note">
-          This is a general preparedness message only. Always follow official advice
-          from DFES, BOM and emergency services.
-        </p>
-      </section>
+      <main class="layout">
 
-      <section class="panel panel-warnings">
-        <h2>Current Warnings – Western Australia</h2>
-        <ul id="warnings-list">
-          <li>Loading warnings…</li>
-        </ul>
-        <p class="warnings-link">
-          For full details, visit
-          <a href="https://www.bom.gov.au/wa/warnings/" target="_blank">BOM WA Warnings</a>
-          and
-          <a href="https://www.emergency.wa.gov.au" target="_blank">Emergency WA</a>.
-        </p>
-      </section>
-
-      <section class="panel panel-info">
-        <h2>About Serpentine Jarrahdale SES</h2>
-        <p>
-          Serpentine Jarrahdale SES is a volunteer emergency service unit supporting
-          the local community during storms, floods, searches and other emergencies.
-        </p>
-        <p>
-          Interested in volunteering or training? Contact your local SES through
-          <a href="https://www.dfes.wa.gov.au" target="_blank">DFES</a>.
-        </p>
-      </section>
-
-      <section class="panel panel-info">
-        <h2>Training & Recruitment</h2>
-        <div class="grid-2">
-          <div>
-            <h3>Training Night Calendar</h3>
-            <canvas id="qr-training"></canvas>
-            <p><a id="training-link" href="#" target="_blank">Open Calendar</a></p>
+        <section class="panel panel-main">
+          <h2>Current Conditions – Local Area</h2>
+          <div class="grid-2">
+            <div>
+              <p><strong>Temperature:</strong> <span id="temp">Loading…</span></p>
+              <p><strong>Feels like:</strong> <span id="feels">Loading…</span></p>
+              <p><strong>Wind:</strong> <span id="wind">Loading…</span></p>
+              <p><strong>Gusts:</strong> <span id="gusts">Loading…</span></p>
+              <p><strong>Rain since 9am:</strong> <span id="rain">Loading…</span></p>
+            </div>
+            <div>
+              <p><strong>Observation site:</strong> <span id="site-name">Loading…</span></p>
+              <p><strong>Last updated:</strong> <span id="obs-time">Loading…</span></p>
+              <p><strong>Forecast district:</strong> <span id="forecast-area">Loading…</span></p>
+              <p><strong>Fire danger:</strong> <span id="fire-danger">Loading…</span></p>
+              <p><strong>Rain chance today:</strong> <span id="rain-chance">Loading…</span></p>
+            </div>
           </div>
-          <div>
-            <h3>Join the SES</h3>
-            <canvas id="qr-recruit"></canvas>
-            <p><a id="recruit-link" href="#" target="_blank">Recruitment Info</a></p>
-          </div>
-        </div>
-      </section>
+        </section>
 
-    </main>
-
-    <footer class="site-footer">
-      <p>
+        <section class="panel panel-alert">
+          <h2>SES Advisory – Serpentine Jarrahdale</h2>
+          <div id="ses-message" class="alert-message">
