@@ -5,100 +5,181 @@
   <title>Serpentine Jarrahdale SES – Local Weather & Warnings</title>
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <link rel="stylesheet" href="assets/css/style.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
   <script src="https://cdnjs.cloudflare.com/ajax/libs/qrious/4.0.2/qrious.min.js"></script>
 </head>
 <body>
   <header class="site-header">
-    <div class="logo-title">
-      <div class="logo-circle">SES</div>
-      <div>
-        <h1>Serpentine Jarrahdale State Emergency Service</h1>
-        <p>Local weather, warnings and preparedness information</p>
+    <div class="hero-banner">
+      <img src="assets/images/hero-background.jpg" alt="Emergency Services" class="hero-img" />
+      <div class="hero-overlay"></div>
+      <div class="header-content">
+        <div class="logo-title">
+          <div class="logo-circle">
+            <i class="fas fa-shield-alt"></i>
+          </div>
+          <div>
+            <h1>Serpentine Jarrahdale SES</h1>
+            <p>State Emergency Service</p>
+            <p class="tagline">Local weather, warnings and preparedness information</p>
+          </div>
+        </div>
       </div>
     </div>
   </header>
 
   <main class="layout">
+    <!-- Current Conditions -->
     <section class="panel panel-main">
-      <h2>Current Conditions – Local Area</h2>
-      <div class="grid-2">
-        <div>
-          <p><strong>Temperature:</strong> <span id="temp">Loading…</span></p>
-          <p><strong>Feels like:</strong> <span id="feels">Loading…</span></p>
-          <p><strong>Wind:</strong> <span id="wind">Loading…</span></p>
-          <p><strong>Gusts:</strong> <span id="gusts">Loading…</span></p>
-          <p><strong>Rain since 9am:</strong> <span id="rain">Loading…</span></p>
+      <div class="panel-header">
+        <h2><i class="fas fa-cloud-sun"></i> Current Conditions – Local Area</h2>
+      </div>
+      <div class="weather-overview">
+        <div class="weather-icon-large">
+          <i class="fas fa-temperature-high"></i>
+          <span id="temp" class="temp-display">--°C</span>
         </div>
-        <div>
-          <p><strong>Observation site:</strong> <span id="site-name">Loading…</span></p>
-          <p><strong>Last updated:</strong> <span id="obs-time">Loading…</span></p>
-          <p><strong>Forecast district:</strong> <span id="forecast-area">Loading…</span></p>
-          <p><strong>Fire danger:</strong> <span id="fire-danger">Loading…</span></p>
-          <p><strong>Rain chance today:</strong> <span id="rain-chance">Loading…</span></p>
+        <div class="grid-2">
+          <div class="condition-box">
+            <h4><i class="fas fa-thermometer-half"></i> Temperature</h4>
+            <p class="condition-value"><span id="temp">Loading…</span>°C</p>
+            <p class="condition-detail">Feels like <span id="feels">--</span>°C</p>
+          </div>
+          <div class="condition-box">
+            <h4><i class="fas fa-wind"></i> Wind</h4>
+            <p class="condition-value"><span id="wind">Loading…</span></p>
+            <p class="condition-detail">Gusts <span id="gusts">--</span></p>
+          </div>
+          <div class="condition-box">
+            <h4><i class="fas fa-droplet"></i> Rainfall</h4>
+            <p class="condition-value"><span id="rain">Loading…</span></p>
+            <p class="condition-detail">Chance today <span id="rain-chance">--</span></p>
+          </div>
+          <div class="condition-box">
+            <h4><i class="fas fa-fire"></i> Fire Danger</h4>
+            <p class="condition-value"><span id="fire-danger">Loading…</span></p>
+            <p class="condition-detail" id="fire-danger-detail">Current level</p>
+          </div>
         </div>
+      </div>
+      <div class="observation-info">
+        <p><strong>Site:</strong> <span id="site-name">Loading…</span></p>
+        <p><strong>District:</strong> <span id="forecast-area">Loading…</span></p>
+        <p><strong>Last updated:</strong> <span id="obs-time">Loading…</span></p>
       </div>
     </section>
 
+    <!-- SES Advisory -->
     <section class="panel panel-alert">
-      <h2>SES Advisory – Serpentine Jarrahdale</h2>
+      <div class="panel-header alert-header">
+        <h2><i class="fas fa-exclamation-triangle"></i> SES Advisory – Serpentine Jarrahdale</h2>
+      </div>
       <div id="ses-message" class="alert-message">
         Calculating local advisory based on current conditions…
       </div>
       <p class="alert-note">
+        <i class="fas fa-info-circle"></i>
         This is a general preparedness message only. Always follow official advice from DFES, BOM and emergency services.
       </p>
     </section>
 
+    <!-- Current Warnings -->
     <section class="panel panel-warnings">
-      <h2>Current Warnings – Western Australia</h2>
-      <ul id="warnings-list">
-        <li>Loading warnings…</li>
+      <div class="panel-header warning-header">
+        <h2><i class="fas fa-bell"></i> Current Warnings – Western Australia</h2>
+      </div>
+      <ul id="warnings-list" class="warnings-list">
+        <li><i class="fas fa-circle-notch"></i> Loading warnings…</li>
       </ul>
       <p class="warnings-link">
-        For full details, visit the official
-        <a href="https://www.bom.gov.au/wa/warnings/" target="_blank" rel="noopener">BOM WA Warnings</a>
+        For full details, visit
+        <a href="https://www.bom.gov.au/wa/warnings/" target="_blank" rel="noopener">
+          <i class="fas fa-external-link-alt"></i> BOM WA Warnings
+        </a>
         and
-        <a href="https://www.emergency.wa.gov.au" target="_blank" rel="noopener">Emergency WA</a>.
+        <a href="https://www.emergency.wa.gov.au" target="_blank" rel="noopener">
+          <i class="fas fa-external-link-alt"></i> Emergency WA
+        </a>.
       </p>
     </section>
 
-    <section class="panel panel-info">
-      <h2>About Serpentine Jarrahdale SES</h2>
-      <p>
-        Serpentine Jarrahdale SES is a volunteer emergency service unit supporting the local community during storms,
-        floods, searches and other emergencies.
-      </p>
-      <p>
-        Interested in volunteering or training? Contact your local SES through
-        <a href="https://www.dfes.wa.gov.au" target="_blank" rel="noopener">DFES</a> or your local council.
-      </p>
+    <!-- About Section -->
+    <section class="panel panel-info about-section">
+      <div class="about-content">
+        <div class="about-text">
+          <div class="panel-header">
+            <h2><i class="fas fa-users"></i> About Serpentine Jarrahdale SES</h2>
+          </div>
+          <p>
+            Serpentine Jarrahdale SES is a volunteer emergency service unit supporting the local community during storms,
+            floods, searches and other emergencies.
+          </p>
+          <p>
+            Our dedicated volunteers are trained and ready to respond to emergency situations and help protect our community.
+          </p>
+          <p>
+            <strong>Interested in volunteering or training?</strong> Contact your local SES through
+            <a href="https://www.dfes.wa.gov.au" target="_blank" rel="noopener">DFES</a> or your local council.
+          </p>
+        </div>
+        <div class="about-image">
+          <img src="assets/images/ses-team.jpg" alt="SES Team" />
+        </div>
+      </div>
     </section>
 
-<section class="panel panel-info">
-  <h2>Training & Recruitment</h2>
+    <!-- Training & Recruitment -->
+    <section class="panel panel-info recruitment-section">
+      <div class="panel-header">
+        <h2><i class="fas fa-graduation-cap"></i> Training & Recruitment</h2>
+      </div>
+      <div class="recruitment-grid">
+        <div class="recruitment-card">
+          <div class="qr-container">
+            <canvas id="qr-training"></canvas>
+          </div>
+          <h3>Training Night Calendar</h3>
+          <p>Join us for regular training sessions. Scan the QR code to view our calendar.</p>
+          <p><a id="training-link" href="#" target="_blank" class="btn-link">
+            <i class="fas fa-calendar-alt"></i> Open Calendar
+          </a></p>
+        </div>
 
-  <div class="grid-2">
-    <div>
-      <h3>Training Night Calendar</h3>
-      <canvas id="qr-training"></canvas>
-      <p><a id="training-link" href="#" target="_blank">Open Calendar</a></p>
-    </div>
-
-    <div>
-      <h3>Join the SES</h3>
-      <canvas id="qr-recruit"></canvas>
-      <p><a id="recruit-link" href="#" target="_blank">Recruitment Info</a></p>
-    </div>
-  </div>
-</section>
+        <div class="recruitment-card">
+          <div class="qr-container">
+            <canvas id="qr-recruit"></canvas>
+          </div>
+          <h3>Join the SES</h3>
+          <p>Become part of our volunteer team and make a difference in your community.</p>
+          <p><a id="recruit-link" href="#" target="_blank" class="btn-link">
+            <i class="fas fa-user-plus"></i> Recruitment Info
+          </a></p>
+        </div>
+      </div>
+    </section>
     
   </main>
 
   <footer class="site-footer">
-    <p>
-      Weather data &copy; Bureau of Meteorology. This site is an unofficial community information page for
-      Serpentine Jarrahdale SES.
-    </p>
+    <div class="footer-content">
+      <div class="footer-section">
+        <h4>Contact</h4>
+        <p>Emergency: 000</p>
+        <p>Non-emergency: 1300 SES WA</p>
+      </div>
+      <div class="footer-section">
+        <h4>Quick Links</h4>
+        <ul>
+          <li><a href="https://www.dfes.wa.gov.au">DFES</a></li>
+          <li><a href="https://www.bom.gov.au">Bureau of Meteorology</a></li>
+        </ul>
+      </div>
+      <div class="footer-section footer-copyright">
+        <p>&copy; 2026 Serpentine Jarrahdale SES</p>
+        <p>Weather data &copy; Bureau of Meteorology</p>
+        <p>This is an unofficial community information page</p>
+      </div>
+    </div>
   </footer>
 
   <script src="assets/js/bom.js"></script>
