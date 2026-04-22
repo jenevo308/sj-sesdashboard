@@ -2,11 +2,45 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <title>Serpentine Jarrahdale SES – Local Weather & Warnings</title>
+  <title>Serpentine Jarrahdale SES – Local Weather &amp; Warnings</title>
   <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <!-- =========================================
+       Portrait rotation fix for Samsung TVs
+       (FullPageOS / Chromium kiosk safe)
+       ========================================= -->
+  <style>
+    html, body {
+      width: 100vw;
+      height: 100vh;
+      margin: 0;
+      padding: 0;
+      overflow: hidden;
+    }
+
+    body {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100vh;
+      height: 100vw;
+      transform: rotate(90deg) translateY(-100%);
+      transform-origin: top left;
+      box-sizing: border-box;
+    }
+
+    *, *::before, *::after {
+      box-sizing: border-box;
+    }
+  </style>
+
+  <!-- Your existing stylesheet -->
   <link rel="stylesheet" href="assets/css/style.css" />
+
+  <!-- QR code library -->
   <script src="https://cdnjs.cloudflare.com/ajax/libs/qrious/4.0.2/qrious.min.js"></script>
 </head>
+
 <body>
   <header class="site-header">
     <div class="logo-title">
@@ -70,37 +104,36 @@
       </p>
       <p>
         Interested in volunteering or training? Contact your local SES through
-        <a href="https://www.dfes.wa.gov.au" target="_blank" rel="noopener">DFES</a> or your local council.
+        <a href="https://www.dfes.wa.gov.au" target="_blank" rel="noopener">DFES</a>
+        or your local council.
       </p>
     </section>
 
-<section class="panel panel-info">
-  <h2>Training & Recruitment</h2>
-
-  <div class="grid-2">
-    <div>
-      <h3>Training Night Calendar</h3>
-      <canvas id="qr-training"></canvas>
-      <p><a id="training-link" href="#" target="_blank">Open Calendar</a></p>
-    </div>
-
-    <div>
-      <h3>Join the SES</h3>
-      <canvas id="qr-recruit"></canvas>
-      <p><a id="recruit-link" href="#" target="_blank">Recruitment Info</a></p>
-    </div>
-  </div>
-</section>
-    
+    <section class="panel panel-info">
+      <h2>Training &amp; Recruitment</h2>
+      <div class="grid-2">
+        <div>
+          <h3>Training Night Calendar</h3>
+          <canvas id="qr-training"></canvas>
+          <p><a id="training-link" href="#" target="_blank">Open Calendar</a></p>
+        </div>
+        <div>
+          <h3>Join the SES</h3>
+          <canvas id="qr-recruit"></canvas>
+          <p><a id="recruit-link" href="#" target="_blank">Recruitment Info</a></p>
+        </div>
+      </div>
+    </section>
   </main>
 
   <footer class="site-footer">
     <p>
-      Weather data &copy; Bureau of Meteorology. This site is an unofficial community information page for
-      Serpentine Jarrahdale SES.
+      Weather data &copy; Bureau of Meteorology.
+      This site is an unofficial community information page for Serpentine Jarrahdale SES.
     </p>
   </footer>
 
+  <!-- Your existing BOM / logic script -->
   <script src="assets/js/bom.js"></script>
 </body>
 </html>
