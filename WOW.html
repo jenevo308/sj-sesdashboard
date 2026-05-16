@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>WOW DAY — Serpentine Jarrahdale SES</title>
+
+    <style>
+        body {
+            margin: 0;
+            font-family: "Segoe UI", Arial, sans-serif;
+            background: #000;
+            color: #fff;
+        }
+
+        /* HERO SECTION */
+        .hero {
+            background: linear-gradient(180deg, #ff6a00 0%, #d45500 60%, #000 100%);
+            padding: 80px 20px;
+            text-align: center;
+            color: white;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            position: relative;
+        }
+
+        .hero h1 {
+            font-size: 3.2rem;
+            font-weight: 900;
+            margin: 0;
+            text-shadow: 0 0 20px #000;
+        }
+
+        .hero h2 {
+            font-size: 1.4rem;
+            margin-top: 10px;
+            opacity: 0.9;
+        }
+
+        .hero::after {
+            content: "⚡";
+            font-size: 5rem;
+            position: absolute;
+            bottom: -30px;
+            left: 50%;
+            transform: translateX(-50%);
+            opacity: 0.2;
+        }
+
+        /* NAV BUTTONS */
+        .nav-section {
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+            padding: 40px 20px;
+        }
+
+        .nav-button {
+            background: #ff6a00;
+            color: #000;
+            padding: 20px;
+            text-align: center;
+            font-size: 1.4rem;
+            font-weight: 700;
+            border-radius: 10px;
+            text-decoration: none;
+            text-transform: uppercase;
+            box-shadow: 0 0 15px rgba(255, 106, 0, 0.6);
+            transition: 0.2s;
+        }
+
+        .nav-button:hover {
+            background: #ffa04d;
+            transform: scale(1.05);
+        }
+
+        /* WOW DAY FEATURE BLOCK */
+        .wow-feature {
+            background: #111;
+            padding: 40px 20px;
+            border-top: 3px solid #ff6a00;
+            border-bottom: 3px solid #ff6a00;
+            text-align: center;
+        }
+
+        .wow-feature h3 {
+            font-size: 2rem;
+            margin-bottom: 10px;
+            color: #ff6a00;
+        }
+
+        .wow-feature p {
+            font-size: 1.2rem;
+            opacity: 0.9;
+        }
+
+        /* FOOTER */
+        footer {
+            text-align: center;
+            padding: 20px;
+            font-size: 0.9rem;
+            opacity: 0.7;
+        }
+
+        @media (min-width: 700px) {
+            .nav-section {
+                flex-direction: row;
+                justify-content: center;
+            }
+            .nav-button {
+                width: 250px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- HERO -->
+    <!--<div class="hero">
+        <h1>WOW DAY</h1>
+        <h2>Orange Out — Unleash the SES</h2>
+    </div>-->
+<style>
+    .hero {
+        height: 70vh;
+        background: 
+            linear-gradient(180deg, rgba(255,106,0,0.75) 0%, rgba(0,0,0,0.85) 100%),
+            url("assets/images/ses-team.jpg") center/cover no-repeat;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        text-align: center;
+        padding: 20px;
+        color: white;
+        text-transform: uppercase;
+        letter-spacing: 2px;
+        position: relative;
+    }
+
+    .hero h1 {
+        font-size: 3.4rem;
+        font-weight: 900;
+        margin: 0;
+        text-shadow: 0 0 25px #000;
+    }
+
+    .hero h2 {
+        font-size: 1.4rem;
+        margin-top: 12px;
+        opacity: 0.95;
+        text-shadow: 0 0 15px #000;
+    }
+</style>
+
+<div class="hero">
+    <h1>WOW DAY</h1>
+    <h2>Orange Out — Unleash the SES</h2>
+</div>
+
+
+
+    <!-- FEATURE -->
+    <div class="wow-feature">
+        <h3>One Team. One Mission. One WOW Day.</h3>
+        <p>
+            Step into the biggest, boldest SES experience of the year.  
+            High‑energy challenges, teamwork, skills, and orange pride — all in one place.
+        </p>
+    </div>
+
+    <!-- NAVIGATION -->
+    <div class="nav-section">
+        <a class="nav-button" href="training-calendar.html">Training Calendar</a>
+        <a class="nav-button" href="recruitment.html">Recruitment</a>
+        <a class="nav-button" href="https://jenevo308.github.io/sj-sesdashboard">Live Dashboard</a>
+    </div>
+
+    <footer>
+        Serpentine Jarrahdale State Emergency Service — Western Australia
+    </footer>
+
+</body>
+</html>
