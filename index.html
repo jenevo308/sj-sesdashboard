@@ -1,0 +1,232 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>SJ SES – Digital Signage</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <!-- Stylesheets -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/qrious/4.0.2/qrious.min.js"></script>
+
+  <style>
+    /* --- GLOBAL SIGNAGE SETTINGS --- */
+    html, body {
+      margin: 0;
+      padding: 0;
+      width: 100vw;
+      height: 100vh;
+      overflow: hidden; /* No scrolling */
+      background: #000;
+      font-family: Arial, sans-serif;
+      color: white;
+    }
+
+    /* --- SLIDES --- */
+    .slide {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100vw;
+      height: 100vh;
+      display: none;
+      padding: 20px;
+      box-sizing: border-box;
+      overflow: hidden;
+      background: #111;
+    }
+
+    .active {
+      display: block;
+    }
+
+    /* --- HEADERS --- */
+    h1, h2 {
+      margin: 0 0 10px 0;
+      padding: 10px;
+      text-align: center;
+      background: #ff6a00;
+      color: black;
+      border-radius: 6px;
+      font-size: 3.5vh;
+    }
+
+    /* --- CONTENT AREA --- */
+    .content-area {
+      height: calc(100vh - 120px);
+      overflow: hidden;
+      padding: 10px;
+      box-sizing: border-box;
+    }
+
+    /* --- QR CODES --- */
+    .qr-container {
+      text-align: center;
+      margin-top: 20px;
+    }
+
+    canvas {
+      background: white;
+      padding: 10px;
+      border-radius: 8px;
+    }
+
+    /* --- TEXT BLOCKS --- */
+    p, li {
+      font-size: 2.4vh;
+      line-height: 1.4;
+    }
+
+    ul {
+      padding-left: 20px;
+    }
+
+    /* --- GRID FOR CONDITIONS --- */
+    .grid-2 {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 12px;
+    }
+
+    .condition-box {
+      background: #222;
+      padding: 12px;
+      border-radius: 8px;
+    }
+
+    .condition-value {
+      font-size: 3vh;
+      font-weight: bold;
+    }
+
+    /* --- ABOUT SECTION --- */
+    .about-text {
+      font-size: 2.5vh;
+    }
+
+  </style>
+</head>
+
+<body>
+
+<!-- SLIDE 1 — HEADER -->
+<div class="slide active" id="slide1">
+  <h1>Serpentine Jarrahdale SES</h1>
+  <div class="content-area">
+    <p style="text-align:center; font-size:3vh;">
+      Local weather, warnings and preparedness information
+    </p>
+  </div>
+</div>
+
+<!-- SLIDE 2 — CURRENT CONDITIONS -->
+<div class="slide" id="slide2">
+  <h2><i class="fas fa-cloud-sun"></i> Current Conditions – Local Area</h2>
+  <div class="content-area">
+    <div class="grid-2">
+      <div class="condition-box">
+        <h4>Temperature</h4>
+        <p class="condition-value"><span id="temp">--</span>°C</p>
+        <p>Feels like <span id="feels">--</span>°C</p>
+      </div>
+      <div class="condition-box">
+        <h4>Wind</h4>
+        <p class="condition-value"><span id="wind">--</span></p>
+        <p>Gusts <span id="gusts">--</span></p>
+      </div>
+      <div class="condition-box">
+        <h4>Rainfall</h4>
+        <p class="condition-value"><span id="rain">--</span></p>
+        <p>Chance today <span id="rain-chance">--</span></p>
+      </div>
+      <div class="condition-box">
+        <h4>Fire Danger</h4>
+        <p class="condition-value"><span id="fire-danger">--</span></p>
+        <p id="fire-danger-detail">Current level</p>
+      </div>
+    </div>
+    <p><strong>Site:</strong> <span id="site-name">--</span></p>
+    <p><strong>District:</strong> <span id="forecast-area">--</span></p>
+    <p><strong>Last updated:</strong> <span id="obs-time">--</span></p>
+  </div>
+</div>
+
+<!-- SLIDE 3 — SES ADVISORY -->
+<div class="slide" id="slide3">
+  <h2><i class="fas fa-exclamation-triangle"></i> SES Advisory</h2>
+  <div class="content-area">
+    <p id="ses-message" style="font-size:3vh;">
+      Calculating local advisory based on current conditions…
+    </p>
+    <p style="margin-top:20px;">
+      <i class="fas fa-info-circle"></i>
+      This is a general preparedness message only. Always follow official advice from DFES, BOM and emergency services.
+    </p>
+  </div>
+</div>
+
+<!-- SLIDE 4 — CURRENT WARNINGS -->
+<div class="slide" id="slide4">
+  <h2><i class="fas fa-bell"></i> Current Warnings – Western Australia</h2>
+  <div class="content-area">
+    <ul id="warnings-list">
+      <li>Loading warnings…</li>
+    </ul>
+  </div>
+</div>
+
+<!-- SLIDE 5 — ABOUT SES -->
+<div class="slide" id="slide5">
+  <h2><i class="fas fa-users"></i> About Serpentine Jarrahdale SES</h2>
+  <div class="content-area about-text">
+    <p>Serpentine Jarrahdale SES is a volunteer emergency service unit supporting the local community during storms, floods, searches and other emergencies.</p>
+    <p>Our dedicated volunteers are trained and ready to respond to emergency situations and help protect our community.</p>
+    <p><strong>Interested in volunteering?</strong> Visit DFES or your local council.</p>
+  </div>
+</div>
+
+<!-- SLIDE 6 — TRAINING & RECRUITMENT -->
+<div class="slide" id="slide6">
+  <h2><i class="fas fa-graduation-cap"></i> Training & Recruitment</h2>
+  <div class="content-area">
+    <div class="qr-container">
+      <canvas id="qr-training"></canvas>
+      <p>Training Night Calendar</p>
+    </div>
+    <div class="qr-container">
+      <canvas id="qr-recruit"></canvas>
+      <p>Join the SES</p>
+    </div>
+  </div>
+</div>
+
+<script>
+/* --- SLIDESHOW LOGIC --- */
+let currentSlide = 0;
+const slides = document.querySelectorAll('.slide');
+const totalSlides = slides.length;
+
+setInterval(() => {
+  slides[currentSlide].classList.remove('active');
+  currentSlide = (currentSlide + 1) % totalSlides;
+  slides[currentSlide].classList.add('active');
+}, 12000);
+
+/* --- QR CODES --- */
+new QRious({
+  element: document.getElementById('qr-training'),
+  value: "https://jenevo308.github.io/sj-sesdashboard/training.html",
+  size: 250
+});
+
+new QRious({
+  element: document.getElementById('qr-recruit'),
+  value: "https://jenevo308.github.io/sj-sesdashboard/recruitment.html",
+  size: 250
+});
+</script>
+
+<script src="assets/js/bom.js"></script>
+
+</body>
+</html>
