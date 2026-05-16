@@ -229,18 +229,43 @@
 </div>
 
 <script>
-/* SLIDESHOW */
+/* --- URL PARAMETER MODE CONTROL --- */
+const params = new URLSearchParams(window.location.search);
+const mode = params.get("mode") || "loop";  
+// "loop" = loop forever
+// "wow"  = redirect after final slide
+
+const wowPage = "wow.html";   // Change if needed
+const slideDuration = 12000;  // 12 seconds per slide
+
+/* --- SLIDESHOW LOGIC --- */
 let currentSlide = 0;
 const slides = document.querySelectorAll('.slide');
 const totalSlides = slides.length;
 
-setInterval(() => {
+function advanceSlide() {
   slides[currentSlide].classList.remove('active');
-  currentSlide = (currentSlide + 1) % totalSlides;
-  slides[currentSlide].classList.add('active');
-}, 12000);
+  currentSlide++;
 
-/* QR CODES */
+  if (currentSlide >= totalSlides) {
+    if (mode === "wow") {
+      window.location.href = wowPage;
+      return;
+    } else {
+      currentSlide = 0; // Loop forever
+    }
+  }
+
+  slides[currentSlide].classList.add('active');
+}
+
+// Start slideshow
+setTimeout(function cycle() {
+  advanceSlide();
+  setTimeout(cycle, slideDuration);
+}, slideDuration);
+
+/* --- QR CODES --- */
 new QRious({
   element: document.getElementById('qr-training'),
   value: "https://jenevo308.github.io/sj-sesdashboard/training.html",
@@ -249,7 +274,7 @@ new QRious({
 
 new QRious({
   element: document.getElementById('qr-recruit'),
-  value: "https://dfes.wa.gov.au",
+  value: "https://jenevo308.github.io/sj-sesdashboard/recruitment.html",
   size: 180
 });
 </script>
