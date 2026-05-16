@@ -20,33 +20,49 @@
       color: white;
     }
 
-    /* --- MAIN LAYOUT: LEFT SLIDESHOW + RIGHT QR BAR --- */
+    /* MAIN LAYOUT: slideshow above, QR bar bottom */
     #layout {
       display: grid;
-      grid-template-columns: 80% 20%;
+      grid-template-rows: 80% 20%;
       width: 100vw;
       height: 100vh;
     }
 
-    /* LEFT SIDE: SLIDESHOW */
+    /* SLIDESHOW AREA */
     #slides {
       position: relative;
       width: 100%;
       height: 100%;
       overflow: hidden;
-      background: #111;
+
+      /* Background image */
+      background-image: url('assets/images/ses-team.jpg');
+      background-size: cover;
+      background-position: center;
+      background-repeat: no-repeat;
     }
 
-    .slide {
+    /* Dark overlay for readability */
+    #slides::before {
+      content: "";
       position: absolute;
       top: 0;
       left: 0;
       width: 100%;
       height: 100%;
-      display: none;
+      background: rgba(0,0,0,0.45);
+      z-index: 1;
+    }
+
+    /* Slides appear above overlay */
+    .slide {
+      position: absolute;
+      z-index: 2;
+      width: 100%;
+      height: 100%;
       padding: 20px;
       box-sizing: border-box;
-      overflow: hidden;
+      display: none;
     }
 
     .active {
@@ -64,35 +80,35 @@
     }
 
     .content-area {
-      height: calc(100vh - 120px);
+      height: calc(100vh - 160px);
       overflow: hidden;
       padding: 10px;
       box-sizing: border-box;
     }
 
-    /* RIGHT SIDE: FIXED QR PANEL */
-    #qr-panel {
+    /* QR BAR AT BOTTOM */
+    #qr-bar {
       background: #222;
-      border-left: 4px solid #ff6a00;
-      padding: 20px;
-      box-sizing: border-box;
+      border-top: 4px solid #ff6a00;
+      display: flex;
+      justify-content: space-evenly;
+      align-items: center;
+      padding: 10px 0;
+    }
+
+    #qr-bar .qr-block {
       text-align: center;
     }
 
-    #qr-panel h3 {
-      font-size: 2.8vh;
-      margin-bottom: 10px;
+    #qr-bar h3 {
+      font-size: 2.4vh;
+      margin: 5px 0;
     }
 
     canvas {
       background: white;
       padding: 10px;
       border-radius: 8px;
-      margin-bottom: 20px;
-    }
-
-    p {
-      font-size: 2.2vh;
     }
 
     /* Condition boxes */
@@ -112,6 +128,11 @@
       font-size: 3vh;
       font-weight: bold;
     }
+
+    p, li {
+      font-size: 2.4vh;
+      line-height: 1.4;
+    }
   </style>
 </head>
 
@@ -119,7 +140,7 @@
 
 <div id="layout">
 
-  <!-- LEFT: SLIDESHOW -->
+  <!-- SLIDESHOW -->
   <div id="slides">
 
     <!-- SLIDE 1 -->
@@ -186,24 +207,29 @@
       <h2><i class="fas fa-users"></i> About SES</h2>
       <div class="content-area">
         <p>Serpentine Jarrahdale SES is a volunteer emergency service unit supporting the local community.</p>
+        <p>Our volunteers respond to storms, floods, searches and emergencies.</p>
       </div>
     </div>
 
   </div>
 
-  <!-- RIGHT: FIXED QR PANEL -->
-  <div id="qr-panel">
-    <h3>Training Calendar</h3>
-    <canvas id="qr-training"></canvas>
+  <!-- QR BAR -->
+  <div id="qr-bar">
+    <div class="qr-block">
+      <canvas id="qr-training"></canvas>
+      <h3>Training Calendar</h3>
+    </div>
 
-    <h3>Join the SES</h3>
-    <canvas id="qr-recruit"></canvas>
+    <div class="qr-block">
+      <canvas id="qr-recruit"></canvas>
+      <h3>Join the SES</h3>
+    </div>
   </div>
 
 </div>
 
 <script>
-/* --- SLIDESHOW --- */
+/* SLIDESHOW */
 let currentSlide = 0;
 const slides = document.querySelectorAll('.slide');
 const totalSlides = slides.length;
@@ -214,17 +240,17 @@ setInterval(() => {
   slides[currentSlide].classList.add('active');
 }, 12000);
 
-/* --- QR CODES --- */
+/* QR CODES */
 new QRious({
   element: document.getElementById('qr-training'),
   value: "https://jenevo308.github.io/sj-sesdashboard/training.html",
-  size: 200
+  size: 180
 });
 
 new QRious({
   element: document.getElementById('qr-recruit'),
   value: "https://dfes.wa.gov.au",
-  size: 200
+  size: 180
 });
 </script>
 
