@@ -224,6 +224,12 @@
       <canvas id="qr-recruit"></canvas>
       <h3>Join the SES</h3>
     </div>
+
+    <div class="qr-block">
+  <canvas id="qr-emergency"></canvas>
+  <h3>Emergency WA</h3>
+</div>
+
   </div>
 
 </div>
@@ -277,6 +283,13 @@ new QRious({
   value: "https://jenevo308.github.io/sj-sesdashboard/recruitment.html",
   size: 180
 });
+
+new QRious({
+  element: document.getElementById('qr-emergency'),
+  value: "https://www.emergency.wa.gov.au/",
+  size: 180
+});
+  
 </script>
 
 <script src="assets/js/bom.js"></script>
