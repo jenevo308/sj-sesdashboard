@@ -13,7 +13,10 @@
             color: #fff;
         }
 
-        /* HERO SECTION */
+        /* ---------------------------------------------------------
+           HERO SECTION — MAIN TV TITLE AREA
+           Adjust font sizes for TV here (h1 + h2)
+        --------------------------------------------------------- */
         .hero {
             background: linear-gradient(180deg, #ff6a00 0%, #d45500 60%, #000 100%);
             padding: 80px 20px;
@@ -25,23 +28,22 @@
         }
 
         .hero h1 {
-            font-size: 18vw;   /* fills the screen but never overflows */
+            font-size: 18vw;   /* <<< ADJUST MAIN TITLE SIZE HERE (TV scaling) */
             font-weight: 900;
             margin: 0;
             text-shadow: 0 0 20px #000;
         }
 
         .hero h2 {
-            font-size: 9vw;    /* perfect proportional pairing */
+            font-size: 9vw;    /* <<< ADJUST SUBTITLE SIZE HERE (TV scaling) */
             margin-top: 10px;
             opacity: 0.9;
             text-shadow: 0 0 20px #000;
         }
 
-
         .hero::after {
             content: "⚡";
-            font-size: 5rem;
+            font-size: 5rem;   /* <<< Adjust lightning icon size here */
             position: absolute;
             bottom: -30px;
             left: 50%;
@@ -49,7 +51,9 @@
             opacity: 0.2;
         }
 
-        /* NAV BUTTONS */
+        /* ---------------------------------------------------------
+           NAV BUTTONS — Adjust button text size here
+        --------------------------------------------------------- */
         .nav-section {
             display: flex;
             flex-direction: column;
@@ -62,7 +66,7 @@
             color: #000;
             padding: 20px;
             text-align: center;
-            font-size: 1.4rem;
+            font-size: 1.4rem;   /* <<< Adjust navigation button text size here */
             font-weight: 700;
             border-radius: 10px;
             text-decoration: none;
@@ -76,7 +80,9 @@
             transform: scale(1.05);
         }
 
-        /* WOW DAY FEATURE BLOCK */
+        /* ---------------------------------------------------------
+           FEATURE BLOCK — Adjust heading + paragraph sizes here
+        --------------------------------------------------------- */
         .wow-feature {
             background: #111;
             padding: 40px 20px;
@@ -86,90 +92,35 @@
         }
 
         .wow-feature h3 {
-            font-size: 2rem;
+            font-size: 2rem;   /* <<< Adjust feature title size here */
             margin-bottom: 10px;
             color: #ff6a00;
         }
 
         .wow-feature p {
-            font-size: 1.2rem;
+            font-size: 1.2rem; /* <<< Adjust feature paragraph size here */
             opacity: 0.9;
         }
 
-        /* FOOTER */
+        /* ---------------------------------------------------------
+           FOOTER — Adjust footer text size here
+        --------------------------------------------------------- */
         footer {
             text-align: center;
             padding: 20px;
-            font-size: 0.9rem;
+            font-size: 0.9rem;  /* <<< Adjust footer text size here */
             opacity: 0.7;
         }
-
-        @media (min-width: 700px) {
-            .nav-section {
-                flex-direction: row;
-                justify-content: center;
-            }
-            .nav-button {
-                width: 250px;
-            }
-        }
     </style>
-<script>
-    // Change 10000 to however many milliseconds you want (10,000 = 10 seconds)
-    setTimeout(function() {
-        window.location.href = "https://jenevo308.github.io/sj-sesdashboard"; 
-    }, 30000);
-</script>  
 </head>
 
 <body>
 
-    <!-- HERO -->
-    <!--<div class="hero">
+    <div class="hero">
         <h1>WOW DAY</h1>
-        <h2>Orange Out — Unleash the SES</h2>
-    </div>-->
-<style>
-    .hero {
-        height: 70vh;
-        background: 
-            linear-gradient(180deg, rgba(255,106,0,0.75) 0%, rgba(0,0,0,0.85) 100%),
-            url("assets/images/ses-team.jpg") center/cover no-repeat;
-        display: flex;
-        flex-direction: column;
-        justify-content: center;
-        align-items: center;
-        text-align: center;
-        padding: 20px;
-        color: white;
-        text-transform: uppercase;
-        letter-spacing: 2px;
-        position: relative;
-    }
+        <h2>What We Do - WOW Day - Wear Orange</h2>
+    </div>
 
-    .hero h1 {
-        font-size: 3.4rem;
-        font-weight: 900;
-        margin: 0;
-        text-shadow: 0 0 25px #000;
-    }
-
-    .hero h2 {
-        font-size: 1.4rem;
-        margin-top: 12px;
-        opacity: 0.95;
-        text-shadow: 0 0 15px #000;
-    }
-</style>
-
-<div class="hero">
-    <h1>WOW DAY! 2026</h1>
-    <h2>What We Do - WOW Day - Wear Orange</h2>
-</div>
-
-
-
-    <!-- FEATURE -->
     <div class="wow-feature">
         <h3>One Team. One Mission. One WOW Day.</h3>
         <p>
@@ -178,7 +129,6 @@
         </p>
     </div>
 
-    <!-- NAVIGATION -->
     <div class="nav-section">
         <a class="nav-button" href="training-calendar.html">Training Calendar</a>
         <a class="nav-button" href="recruitment.html">Recruitment</a>
