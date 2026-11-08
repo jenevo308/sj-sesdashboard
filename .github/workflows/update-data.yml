@@ -1,0 +1,48 @@
+yaml
+name: Update SES data
+
+on:
+  schedule:
+    - cron: "*/10 * * * *"
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+concurrency:
+  group: update-data
+  cancel-in-progress: false
+
+jobs:
+  update:
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: npm
+
+      - run: npm ci
+
+      - name: Get previous data
+        run: |
+          git fetch origin data --depth=1 2>/dev/null \
+            && git show origin/data:live.json > prev.json \
+            || echo '{}' > prev.json
+
+      - name: Fetch BOM + Emergency WA
+        run: node scripts/fetch-data.mjs --prev prev.json --out out/live.json
+
+      - name: Publish to data branch
+        run: |
+          cd out
+          git init -q
+          git checkout -q -b data
+          git config user.name  "ses-dashboard-bot"
+          git config user.email "ses-dashboard-bot@users.noreply.github.com"
+          git add live.json
+          git commit -qm "Update data $(date -u +%Y-%m-%dT%H:%MZ)"
+          git push -f "https://x-access-token:${{ github.token }}@github.com/${{ github.repository }}.git" data
