@@ -1,10 +1,9 @@
-yaml
 name: Update SES data
 
 on:
   schedule:
-    - cron: "*/10 * * * *"
-  workflow_dispatch:
+    - cron: "*/10 * * * *"   # GitHub may delay this by a few minutes under load
+  workflow_dispatch:          # lets you run it manually from the Actions tab
 
 permissions:
   contents: write
@@ -27,6 +26,7 @@ jobs:
 
       - run: npm ci
 
+      # Previous output, so a failed feed keeps its last good data (flagged stale)
       - name: Get previous data
         run: |
           git fetch origin data --depth=1 2>/dev/null \
@@ -36,6 +36,7 @@ jobs:
       - name: Fetch BOM + Emergency WA
         run: node scripts/fetch-data.mjs --prev prev.json --out out/live.json
 
+      # Single-commit orphan branch: no history build-up on main
       - name: Publish to data branch
         run: |
           cd out
