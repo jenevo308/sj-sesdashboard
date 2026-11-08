@@ -10,7 +10,11 @@
 
 import { readFile, writeFile, mkdir } from "node:fs/promises";
 import { dirname, join } from "node:path";
+import { execFile } from "node:child_process";
+import { promisify } from "node:util";
 import { XMLParser } from "fast-xml-parser";
+
+const run = promisify(execFile);
 
 // ---------------------------------------------------------------------------
 // CONFIG – edit these
@@ -25,18 +29,20 @@ const CONFIG = {
   localities:
     /serpentine|jarrahdale|mundijong|byford|keysbrook|whitby|cardup|oakford|hopeland|darling downs|mardella|karrakup/i,
 
-  // BOM observation station (JSON product). 94609 = Jandakot Aero (half-hourly,
-  // has gusts). Karnet is 95614 but it only reports 9am/3pm with no gusts.
-  obsProduct: "IDW60801",
+  // BOM observation station. 94609 = Jandakot Aero (half-hourly, has gusts).
+  // Karnet is 95614 but it only reports 9am/3pm with no gusts.
   obsStation: "94609",
+  // BOM blocks GitHub's servers on the website (HTTP 403), so use the anonymous
+  // FTP service, which is BOM's own route for automated access.
+  obsXmlUrl: "ftp://ftp.bom.gov.au/anon/gen/fwo/IDW60920.xml", // all WA stations
 
-  // BOM district forecast XML and the area name to pick from it
-  forecastUrl: "https://www.bom.gov.au/fwo/IDW12300.xml",
+  // Perth city/town forecast XML and the area name to pick from it
+  forecastUrl: "ftp://ftp.bom.gov.au/anon/gen/fwo/IDW12300.xml",
   forecastAreaMatch: /perth/i,
 
-  // BOM WA warnings RSS – NOT verified, fails soft if wrong. Check the WA feed
-  // on https://www.bom.gov.au/rss/ and paste the exact URL here.
-  bomWarningsUrl: "https://www.bom.gov.au/fwo/IDZ00067.warnings_wa.xml",
+  // BOM WA warnings RSS. The old URL returned 403 from GitHub and was never
+  // verified, so it's off. Emergency WA covers local hazards. Set a URL to re-enable.
+  bomWarningsUrl: null,
 
   // Emergency WA public CAP-AU feed
   ewaUrl: "https://api.emergency.wa.gov.au/v1/capau",
@@ -69,6 +75,13 @@ const text = (x) => (x == null ? "" : typeof x === "object" ? String(x["#text"] 
 
 async function getText(url, fixtureName) {
   if (FIXTURE_DIR) return readFile(join(FIXTURE_DIR, fixtureName), "utf8");
+  if (url.startsWith("ftp://")) {
+    const { stdout } = await run(
+      "curl", ["-sS", "--fail", "--max-time", "45", "--retry", "2", url],
+      { maxBuffer: 64 * 1024 * 1024 }
+    );
+    return stdout;
+  }
   const res = await fetch(url, {
     headers: { "User-Agent": CONFIG.userAgent, Accept: "*/*" },
     signal: AbortSignal.timeout(CONFIG.timeoutMs),
@@ -166,26 +179,38 @@ async function loadEmergencyWA() {
 }
 
 // ---------------------------------------------------------------------------
-// BOM observations (single station JSON)
+// BOM observations – WA state XML (IDW60920), pick our station, newest period
 // ---------------------------------------------------------------------------
 async function loadObservations() {
-  const { obsProduct: p, obsStation: s } = CONFIG;
-  const url = `https://www.bom.gov.au/fwo/${p}/${p}.${s}.json`;
-  const json = JSON.parse(await getText(url, "obs.json"));
-  const o = json?.observations?.data?.[0];
-  if (!o) throw new Error("No observation rows in BOM JSON");
-  const n = (v) => (v == null || v === "-" ? null : Number(v));
+  const doc = xml.parse(await getText(CONFIG.obsXmlUrl, "obs.xml"));
+  const stations = arr(doc?.product?.observations?.station);
+  const st = stations.find((x) => String(x["@_wmo-id"]) === CONFIG.obsStation);
+  if (!st) throw new Error(`Station ${CONFIG.obsStation} not in WA observations XML`);
+
+  const periods = arr(st.period).sort((a, b) =>
+    String(b["@_time-utc"] || "").localeCompare(String(a["@_time-utc"] || ""))
+  );
+  const period = periods[0];
+  if (!period) throw new Error("No observation period for station");
+
+  const e = {};
+  for (const level of arr(period.level)) {
+    for (const el of arr(level.element)) e[el["@_type"]] = text(el);
+  }
+  const n = (v) => (v == null || v === "" || v === "-" ? null : Number.isFinite(Number(v)) ? Number(v) : null);
+  const local = String(period["@_time-local"] || "").slice(0, 19).replace(/\D/g, ""); // YYYYMMDDHHMMSS
+
   return {
-    station: o.name || `Station ${s}`,
-    localTime: o.local_date_time_full || null, // YYYYMMDDHHMMSS, WST
-    temp: n(o.air_temp),
-    feels: n(o.apparent_t),
-    humidity: n(o.rel_hum),
-    windDir: o.wind_dir || null,
-    windKmh: n(o.wind_spd_kmh ?? o.wind_kmh),
-    gustKmh: n(o.gust_kmh),
-    rainSince9am: n(o.rain_trace),
-    pressureHpa: n(o.press_msl ?? o.press),
+    station: st["@_stn-name"] || `Station ${CONFIG.obsStation}`,
+    localTime: local || null,
+    temp: n(e.air_temperature),
+    feels: n(e.apparent_temp),
+    humidity: n(e["rel-humidity"] ?? e.rel_hum),
+    windDir: e.wind_dir || null,
+    windKmh: n(e.wind_spd_kmh),
+    gustKmh: n(e.gust_kmh ?? e.wind_gust_spd),
+    rainSince9am: n(e.rainfall),
+    pressureHpa: n(e.msl_pres ?? e.pres),
   };
 }
 
@@ -222,6 +247,7 @@ async function loadForecast() {
 // BOM warnings RSS (WA)
 // ---------------------------------------------------------------------------
 async function loadBomWarnings() {
+  if (!CONFIG.bomWarningsUrl) return [];
   const doc = xml.parse(await getText(CONFIG.bomWarningsUrl, "bom-warnings.xml"));
   return arr(doc?.rss?.channel?.item).map((i) => ({
     title: text(i.title),

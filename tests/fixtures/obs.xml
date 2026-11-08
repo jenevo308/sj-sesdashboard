@@ -1,0 +1,28 @@
+<?xml version="1.0"?>
+<!-- SYNTHETIC: shape only. Element names are my best understanding of BOM's IDW60920 XML and are unverified. -->
+<product><observations>
+ <station wmo-id="94609" stn-name="JANDAKOT AERO" lat="-32.10" lon="115.88">
+  <period time-utc="2026-11-08T05:00:00+00:00" time-local="2026-11-08T13:00:00+08:00">
+   <level type="surface">
+    <element type="air_temperature" units="Celsius">20.6</element>
+    <element type="apparent_temp" units="Celsius">15.0</element>
+    <element type="rel-humidity" units="%">68</element>
+    <element type="wind_dir" units="DIR">NW</element>
+    <element type="wind_spd_kmh" units="km/h">37</element>
+    <element type="gust_kmh" units="km/h">50</element>
+    <element type="rainfall" units="mm">0.0</element>
+    <element type="msl_pres" units="hPa">1005.8</element>
+   </level></period>
+  <period time-utc="2026-11-08T05:30:00+00:00" time-local="2026-11-08T13:30:00+08:00">
+   <level type="surface">
+    <element type="air_temperature" units="Celsius">20.1</element>
+    <element type="apparent_temp" units="Celsius">14.6</element>
+    <element type="rel-humidity" units="%">71</element>
+    <element type="wind_dir" units="DIR">NW</element>
+    <element type="wind_spd_kmh" units="km/h">37</element>
+    <element type="gust_kmh" units="km/h">50</element>
+    <element type="rainfall" units="mm">0.0</element>
+    <element type="msl_pres" units="hPa">1005.2</element>
+   </level></period>
+ </station>
+</observations></product>
