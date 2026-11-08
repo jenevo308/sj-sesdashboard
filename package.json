@@ -1,0 +1,14 @@
+{
+  "name": "sj-sesdashboard",
+  "private": true,
+  "type": "module",
+  "description": "Data fetcher for the Serpentine Jarrahdale SES community dashboard",
+  "scripts": {
+    "fetch": "node scripts/fetch-data.mjs --out out/live.json",
+    "test": "FIXTURE_DIR=tests/fixtures node scripts/fetch-data.mjs --out out/live.json"
+  },
+  "dependencies": {
+    "fast-xml-parser": "4.5.1"
+  },
+  "engines": { "node": ">=20" }
+}

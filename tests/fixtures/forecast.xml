@@ -1,0 +1,15 @@
+<?xml version="1.0"?>
+<product><forecast>
+ <area aac="WA_PT001" description="Perth" type="location">
+  <forecast-period index="0" start-time-local="2026-11-08T00:00:00+08:00">
+   <element type="air_temperature_maximum" units="Celsius">22</element>
+   <text type="precis">Showers.</text>
+   <text type="probability_of_precipitation">80%</text>
+  </forecast-period>
+  <forecast-period index="1" start-time-local="2026-11-09T00:00:00+08:00">
+   <element type="air_temperature_minimum" units="Celsius">12</element>
+   <element type="air_temperature_maximum" units="Celsius">24</element>
+   <text type="probability_of_precipitation">20%</text>
+  </forecast-period>
+ </area>
+</forecast></product>

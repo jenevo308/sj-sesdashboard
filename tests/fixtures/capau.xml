@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<edxlde:EDXLDistribution xmlns:edxlde="urn:oasis:names:tc:emergency:EDXL:DE:1.0" xmlns:cap="urn:oasis:names:tc:emergency:cap:1.2">
+  <edxlde:distributionID>DFES_ID_Warnings</edxlde:distributionID>
+  <edxlde:contentObject><edxlde:xmlContent><edxlde:embeddedXMLContent>
+    <cap:alert><cap:identifier>6af0065bd60be19bf986a7b4</cap:identifier><cap:sent>2026-11-08T15:29:17.218+08:00</cap:sent>
+      <cap:info><cap:event>Bushfire</cap:event><cap:urgency>Expected </cap:urgency><cap:severity>Moderate </cap:severity>
+        <cap:headline>Bushfire Watch and Act MONITOR CONDITIONS - CASUARINA</cap:headline>
+        <cap:description>A Bushfire Watch and Act is in place for people in the area bounded by Landgren
+Road, Mortimer Road, Kwinana Freeway and Orton Road in CASUARINA in CITY OF
+KWINANA.</cap:description>
+        <cap:web>https://emergency.wa.gov.au/warnings/6af0065bd60be19bf986a7b4</cap:web>
+        <cap:parameter><cap:valueName>DFES_Region</cap:valueName><cap:value>METRO SOUTH COASTAL</cap:value></cap:parameter>
+        <cap:area><cap:areaDesc>x</cap:areaDesc><cap:alertLevel>Bushfire Watch and Act</cap:alertLevel>
+          <cap:polygon>-32.23715724916958,115.85070950839673 -32.23747415496936,115.86060056863829 -32.25590875257249,115.86050607435908 -32.25536219168283,115.85838819539879 -32.23715724916958,115.85070950839673</cap:polygon>
+          <cap:circle>-32.24669512873867,115.85587983534137 0.0</cap:circle></cap:area></cap:info></cap:alert>
+  </edxlde:embeddedXMLContent></edxlde:xmlContent></edxlde:contentObject>
+  <edxlde:contentObject><edxlde:xmlContent><edxlde:embeddedXMLContent>
+    <cap:alert><cap:identifier>6aefc3137075b64cfe0295b4</cap:identifier><cap:sent>2026-11-08T08:34:45.919+08:00</cap:sent>
+      <cap:info><cap:event>Smoke</cap:event><cap:urgency>Immediate </cap:urgency><cap:severity>Minor </cap:severity>
+        <cap:headline>Smoke Alert FOR KARRAGULLEN, ROLEYSTONE AND SURROUNDING AREAS IN THE CITY OF ARMADALE</cap:headline>
+        <cap:description> * A Smoke Alert has been issued for people in KARRAGULLEN, ROLEYSTONE and
+   surrounding areas in the CITY OF ARMADALE.</cap:description>
+        <cap:web>https://emergency.wa.gov.au/warnings/6aefc3137075b64cfe0295b4</cap:web>
+        <cap:area><cap:areaDesc/><cap:alertLevel>Smoke Alert</cap:alertLevel><cap:polygon/>
+          <cap:circle>-32.090748,116.117805 0.0</cap:circle></cap:area></cap:info></cap:alert>
+  </edxlde:embeddedXMLContent></edxlde:xmlContent></edxlde:contentObject>
+  <edxlde:contentObject><edxlde:xmlContent><edxlde:embeddedXMLContent>
+    <cap:alert><cap:identifier>6aefc1187075b64cfe029568</cap:identifier><cap:sent>2026-11-08T08:26:09.483+08:00</cap:sent>
+      <cap:info><cap:event>Smoke</cap:event><cap:urgency>Immediate </cap:urgency><cap:severity>Minor </cap:severity>
+        <cap:headline>Smoke Alert FOR JARRAHDALE AND SURROUNDING AREAS IN THE SHIRE OF SERPENTINE-JARRAHDALE</cap:headline>
+        <cap:description> * A Smoke Alert has been issued for people in for JARRAHDALE and surrounding
+   areas in the SHIRE OF SERPENTINE-JARRAHDALE.</cap:description>
+        <cap:web>https://emergency.wa.gov.au/warnings/6aefc1187075b64cfe029568</cap:web>
+        <cap:parameter><cap:valueName>DFES_Region</cap:valueName><cap:value>METRO SOUTH EAST</cap:value></cap:parameter>
+        <cap:parameter><cap:valueName>Agency_Responsible</cap:valueName><cap:value>Parks and Wildlife Service</cap:value></cap:parameter>
+        <cap:area><cap:areaDesc/><cap:alertLevel>Smoke Alert</cap:alertLevel><cap:polygon/>
+          <cap:circle>-32.336857,116.06275 0.0</cap:circle></cap:area></cap:info></cap:alert>
+  </edxlde:embeddedXMLContent></edxlde:xmlContent></edxlde:contentObject>
+  <edxlde:contentObject><edxlde:xmlContent><edxlde:embeddedXMLContent>
+    <cap:alert><cap:identifier>far</cap:identifier><cap:sent>2026-11-08T14:49:58.404+08:00</cap:sent>
+      <cap:info><cap:event>Bushfire</cap:event><cap:headline>Bushfire Advice THREAT IS REDUCED - KUNUNURRA</cap:headline>
+        <cap:description>Kununurra</cap:description>
+        <cap:area><cap:alertLevel>Bushfire Advice</cap:alertLevel><cap:polygon/><cap:circle>-15.647985,128.783496 0.0</cap:circle></cap:area></cap:info></cap:alert>
+  </edxlde:embeddedXMLContent></edxlde:xmlContent></edxlde:contentObject>
+</edxlde:EDXLDistribution>
