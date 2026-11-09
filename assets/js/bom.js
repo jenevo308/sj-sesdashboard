@@ -9,7 +9,8 @@ const LIVE_URL =
 
 const REFRESH_MS = 5 * 60 * 1000;      // re-read live.json every 5 minutes
 const DATA_STALE_MIN = 45;             // whole file older than this = warn
-const OBS_STALE_MIN = 90;              // observation older than this = hide values
+const OBS_WARN_MIN = 90;               // reading older than this = still shown, but flagged "waiting for update"
+const OBS_EXPIRE_MIN = 240;           // reading older than this = values hidden, "Waiting for data"
 
 // -----------------------------
 // HELPERS
@@ -45,16 +46,40 @@ async function fetchLive() {
 // -----------------------------
 // RENDERERS
 // -----------------------------
+// Small status line under the conditions grid (created if the page has no #obs-time)
+function setObsStatus(text, level) {
+  let el = document.getElementById("obs-time");
+  if (!el) {
+    el = document.getElementById("data-status");
+    if (!el) {
+      const area = document.querySelector("#slide2 .content-area") || document.body;
+      el = document.createElement("p");
+      el.id = "data-status";
+      el.style.cssText = "margin-top:12px;font-size:0.9em;text-align:center;";
+      area.appendChild(el);
+    }
+    el.style.color = level === "ok" ? "" : level === "late" ? "#b45309" : "#b91c1c";
+    el.style.fontWeight = level === "ok" ? "normal" : "bold";
+  }
+  el.textContent = text;
+}
+
+function ageLabel(min) {
+  if (min < 90) return `${Math.round(min)} min ago`;
+  const h = min / 60;
+  return h < 24 ? `${h.toFixed(1)} h ago` : `${Math.floor(h / 24)} d ago`;
+}
+
 function renderObservations(live) {
   const o = live.obs;
   const obsTime = o ? parseBomLocal(o.localTime) : null;
   const ageMin = obsTime ? (Date.now() - obsTime.getTime()) / 60000 : Infinity;
-  const usable = o && ageMin <= OBS_STALE_MIN;
 
-  if (!usable) {
+  // No data, or too old to be useful
+  if (!o || !obsTime || ageMin > OBS_EXPIRE_MIN) {
     ["temp", "feels", "wind", "gusts", "rain"].forEach((id) => setText(id, "–"));
     setText("site-name", o?.station || "Local station");
-    setText("obs-time", o ? "Out of date" : "Unavailable");
+    setObsStatus("Waiting for data… last BOM reading is out of date. Check bom.gov.au for current conditions.", "expired");
     return null;
   }
 
@@ -64,14 +89,16 @@ function renderObservations(live) {
   setText("gusts", o.gustKmh != null ? `${o.gustKmh} km/h` : "–");
   setText("rain", o.rainSince9am != null ? `${o.rainSince9am} mm` : "–");
   setText("site-name", o.station);
-  setText(
-    "obs-time",
-    obsTime.toLocaleString("en-AU", {
-      timeZone: "Australia/Perth",
-      day: "2-digit", month: "2-digit", year: "numeric",
-      hour: "2-digit", minute: "2-digit", hour12: false,
-    })
-  );
+
+  const when = obsTime.toLocaleString("en-AU", {
+    timeZone: "Australia/Perth",
+    weekday: "short", hour: "numeric", minute: "2-digit", hour12: true,
+  });
+  if (ageMin > OBS_WARN_MIN) {
+    setObsStatus(`Last reading ${when} (${ageLabel(ageMin)}), waiting for update. ${o.station}`, "late");
+  } else {
+    setObsStatus(`Observed ${when}, ${o.station}`, "ok");
+  }
   return o;
 }
 
