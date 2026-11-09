@@ -2,7 +2,7 @@ name: Update SES data
 
 on:
   schedule:
-    - cron: "*/10 * * * *"   # GitHub may delay this by a few minutes under load
+    - cron: "7,22,37,52 * * * *"   # off-peak minutes; GitHub still may delay or skip runs
   workflow_dispatch:          # lets you run it manually from the Actions tab
 
 permissions:
