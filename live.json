@@ -1,0 +1,43 @@
+{
+  "generatedAt": "2026-11-21T17:39:11.560Z",
+  "sources": {
+    "obs": {
+      "ok": true,
+      "fetchedAt": "2026-11-21T17:39:11.560Z"
+    },
+    "forecast": {
+      "ok": true,
+      "fetchedAt": "2026-11-21T17:39:11.560Z"
+    },
+    "bomWarnings": {
+      "ok": true,
+      "fetchedAt": "2026-11-21T17:39:11.560Z"
+    },
+    "emergencyWA": {
+      "ok": true,
+      "fetchedAt": "2026-11-21T17:39:11.560Z"
+    }
+  },
+  "obs": {
+    "station": "JANDAKOT AERO",
+    "localTime": "20261122013000",
+    "temp": 16.6,
+    "feels": 9.8,
+    "humidity": 56,
+    "windDir": "W",
+    "windKmh": 33,
+    "gustKmh": 46,
+    "rainSince9am": 1,
+    "pressureHpa": 1015.1
+  },
+  "forecast": {
+    "area": "Perth Coast: Two Rocks to Dawesville",
+    "periods": []
+  },
+  "bomWarnings": [],
+  "emergencyWA": {
+    "local": [],
+    "nearby": [],
+    "totalStatewide": 12
+  }
+}
