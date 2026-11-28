@@ -1,0 +1,80 @@
+{
+  "generatedAt": "2026-11-28T09:24:09.613Z",
+  "sources": {
+    "obs": {
+      "ok": true,
+      "fetchedAt": "2026-11-28T09:24:09.613Z"
+    },
+    "forecast": {
+      "ok": true,
+      "fetchedAt": "2026-11-28T09:24:09.613Z"
+    },
+    "bomWarnings": {
+      "ok": true,
+      "fetchedAt": "2026-11-28T09:24:09.613Z"
+    },
+    "emergencyWA": {
+      "ok": true,
+      "fetchedAt": "2026-11-28T09:24:09.613Z"
+    }
+  },
+  "obs": {
+    "station": "JANDAKOT AERO",
+    "localTime": "20261128172000",
+    "temp": 25.3,
+    "feels": 21.5,
+    "humidity": 45,
+    "windDir": "SW",
+    "windKmh": 24,
+    "gustKmh": 30,
+    "rainSince9am": 0,
+    "pressureHpa": 1022.3
+  },
+  "forecast": {
+    "area": "Perth",
+    "periods": [
+      {
+        "start": "2026-11-28T13:00:00+08:00",
+        "min": null,
+        "max": null,
+        "rainChance": null,
+        "rainRange": null,
+        "precis": null,
+        "fireDanger": null
+      },
+      {
+        "start": "2026-11-29T00:00:00+08:00",
+        "min": null,
+        "max": null,
+        "rainChance": null,
+        "rainRange": null,
+        "precis": null,
+        "fireDanger": ""
+      },
+      {
+        "start": "2026-11-30T00:00:00+08:00",
+        "min": null,
+        "max": null,
+        "rainChance": null,
+        "rainRange": null,
+        "precis": null,
+        "fireDanger": null
+      },
+      {
+        "start": "2026-12-01T00:00:00+08:00",
+        "min": null,
+        "max": null,
+        "rainChance": null,
+        "rainRange": null,
+        "precis": null,
+        "fireDanger": null
+      }
+    ]
+  },
+  "bomWarnings": [],
+  "emergencyWA": {
+    "local": [],
+    "nearby": [],
+    "totalStatewide": 10
+  }
+}
